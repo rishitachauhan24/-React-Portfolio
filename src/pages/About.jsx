@@ -25,21 +25,15 @@ export default function About() {
           About
         </h1>
 
-        <div className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
-         
-          <div className="flex justify-center">
-            <img 
-              src="https://i.postimg.cc/GpRybZBP/rishita-pic.png" 
-              alt="Rishita Chauhan"
-              className="object-cover rounded-2xl"
-              style={{ height: '380px', width: '300px' }}
-            />
-          </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-gray-700 leading-relaxed space-y-6">
+            <p className="text-2xl text-center font-medium">
+I am currently pursuing a Bachelor of Computer Applications (BCA) from Eternal University, Baru Sahib, Himachal Pradesh. I have a strong interest in learning and developing skills in the field of web development.
 
-        
-          <div className="text-gray-700 leading-relaxed space-y-4">
-            <p className="text-base text-justify">
-        Frontend Developer and BCA student skilled in HTML, CSS, JavaScript,and React.js, with hands-on experience in building responsive and user-friendly web applications. Quick learner with strong problem-solving skills, seeking a frontend internship or entry-level role.            </p>
+At present, I am building a foundational understanding of front-end development technologies, including HTML, CSS, JavaScript, and React.js. Along with this, I am also learning Python and Data Structures & Algorithms. In parallel with my academic studies, I am continuously strengthening my technical and soft skills under the guidance of Navgurukul.
+
+My objective is to follow a structured learning path, strengthen my technical foundation, and gain practical exposure through internship opportunities in order to grow professionally.
+            </p>
           </div>
         </div>
       </div>

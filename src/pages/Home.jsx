@@ -1,6 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Home() {
+  const [displayText, setDisplayText] = useState('Frontend Developer')
+  const [fadeOut, setFadeOut] = useState(false)
+  
+  useEffect(() => {
+    const texts = ['Frontend Developer', 'Aspiring Full Stack Developer']
+    let currentIndex = 0
+    
+    const interval = setInterval(() => {
+      setFadeOut(true)
+      
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % texts.length
+        setDisplayText(texts[currentIndex])
+        setFadeOut(false)
+      }, 500)
+    }, 4000)
+    
+    return () => clearInterval(interval)
+  }, [])
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
     if (element) {
@@ -41,12 +61,14 @@ export default function Home() {
             </span>
           </h2>
 
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-16">
-            Frontend Developer
+          <h3 className={`text-2xl md:text-3xl font-bold text-gray-900 mb-16 transition-all duration-500 ${
+            fadeOut ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'
+          }`}>
+            {displayText}
           </h3>
 
           <button 
-            onClick={() => window.open('https://drive.google.com/file/d/18xfXFX_qGgwGFr3eiIzqSF2g0Z-Gac2G/preview', '_blank')}
+            onClick={() => window.open('https://drive.google.com/file/d/1iU1gV8Z14lSWSeiGn6-5BFu4CoyBXhHC/view?usp=sharing', '_blank')}
             className="inline-flex items-center bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition font-medium shadow-lg hover:shadow-xl"
           >
             Resume 
@@ -91,12 +113,12 @@ export default function Home() {
 
           {/* Main Profile Image */}
           <div className="relative z-10">
-            <div className="w-80 h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl bg-gradient-to-br from-purple-100 to-pink-100">
+            <div className="w-[420px] h-[420px] rounded-full overflow-hidden border-8 border-white shadow-2xl bg-gradient-to-br from-purple-100 to-pink-100">
               <img 
-                src="https://i.postimg.cc/GpRybZBP/rishita-pic.png" 
+                src="/profile.jpg" 
                 alt="Rishita Chauhan"
-                className="w-full h-full object-cover rounded-full"
-                style={{ objectPosition: 'center 20%' }}
+                className="w-full h-full object-cover rounded-full scale-125"
+                style={{ objectPosition: 'center 0%' }}
               />
             </div>
             

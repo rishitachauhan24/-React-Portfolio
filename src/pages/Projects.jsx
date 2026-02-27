@@ -70,7 +70,7 @@ export default function Projects(){
         <ProjectCard 
           title="Escape the Room" 
           description="A simple interactive game where users try to escape from a locked room by clicking objects and finding clues. Features include smooth animations, button interactions, and a clean UI built using HTML, CSS, and JavaScript."
-          tags={['HTML', 'CSS', 'JavaScript', 'Game Design']}
+         
           link="https://hackathon-ashen-ten.vercel.app/"
           image="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&h=300&fit=crop"
         />
@@ -78,7 +78,7 @@ export default function Projects(){
         <ProjectCard 
           title="To-Do-List" 
           description="A clean and responsive task-management app where users can add, delete, and mark tasks as completed. Designed with simple UI and smooth interactions to help users stay organized."
-          tags={['HTML', 'CSS', 'JavaScript', 'UI/UX']}
+          
           link="https://to-do-list-xi-orpin-28.vercel.app/"
           image="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500&h=300&fit=crop"
         />
@@ -86,17 +86,17 @@ export default function Projects(){
         <ProjectCard 
           title="Recipe Website" 
           description="A user-friendly recipe website where users can explore different dishes with visuals. Built using HTML, CSS, and JavaScript with smooth navigation and responsive layout."
-          tags={['HTML', 'CSS', 'JavaScript', 'Responsive Design']}
+          
           link="https://recipe-five-flax.vercel.app/#booking"
           image="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=300&fit=crop"
         />
         
         <ProjectCard 
-          title="Change Text & Add Task" 
-          description="A mini project that demonstrates DOM manipulation. Users can interactively change text content and add tasks dynamically. Simple UI and perfect example of how JavaScript handles real-time updates."
-          tags={['HTML', 'CSS', 'JavaScript', 'DOM Manipulation']}
-          link="https://my-list-pi.vercel.app/"
-          image="https://images.unsplash.com/photo-1517842645767-c639042777db?w=500&h=300&fit=crop"
+          title="Learning Intern API" 
+          description="A comprehensive API platform designed for learning and internship management. Features include user authentication, course management, and progress tracking with a modern backend architecture."
+         
+          link="https://learning-intern-api.vercel.app/"
+          image="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&h=300&fit=crop"
         />
       </div>
       </div>

@@ -23,8 +23,7 @@ const Nav = () => {
   }
 
   const handleResumeDownload = () => {
-    
-    const resumeUrl = 'https://drive.google.com/file/d/18xfXFX_qGgwGFr3eiIzqSF2g0Z-Gac2G/preview'
+    const resumeUrl = 'https://drive.google.com/file/d/1iU1gV8Z14lSWSeiGn6-5BFu4CoyBXhHC/view?usp=sharing'
     window.open(resumeUrl, '_blank')
   }
 

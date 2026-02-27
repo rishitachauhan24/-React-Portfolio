@@ -6,11 +6,46 @@ export default function Contact(){
     email: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    alert('Form submitted! (This is a demo - connect to a backend to actually send)')
-    console.log('Form data:', formData)
+    setIsSubmitting(true)
+
+    try {
+      // Web3Forms - Free & Instant!
+      // Get your own key: https://web3forms.com (just enter your email - takes 30 seconds!)
+      // TODO: Replace 'YOUR_ACCESS_KEY_HERE' with your actual key from web3forms.com
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: 'faa9c473-ab0c-4687-9769-59c1a8c51b10', // Your Web3Forms access key
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: 'New Portfolio Contact Message!',
+          from_name: 'Portfolio Contact Form'
+        })
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        alert('✅ Message successfully sent! I will reply to you soon.')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        throw new Error('Failed to send')
+      }
+    } catch (error) {
+      console.error('Submit error:', error)
+      alert('❌ Kuch galat ho gaya. Please directly email karo: rishitachauhan24@navgurukul.org')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e) => {
@@ -23,7 +58,7 @@ export default function Contact(){
   return (
     <section id="contact" className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50 py-16 relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.08]">
+      <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
         <div className="absolute inset-0 grid grid-cols-6 md:grid-cols-8 gap-16 p-12">
           {[...Array(64)].map((_, i) => (
             <div key={i} className="flex items-center justify-center text-gray-400 transform rotate-12">
@@ -45,10 +80,10 @@ export default function Contact(){
           Contact
         </h1>
         <h2 className="text-2xl font-semibold mb-8 text-center text-gray-600">
-          CONTACT US
+          {/* CONTACT US */}
         </h2>
         
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8">
+        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 shadow-lg rounded-lg relative z-20">
           <div>
             <label className="block text-sm font-medium mb-2 text-gray-700">Name:</label>
             <input 
@@ -90,30 +125,31 @@ export default function Contact(){
             <span className="text-sm text-gray-700">I am human</span>
             <div className="ml-4">
               {/* <div className="text-xs text-blue-500 font-semibold">hCaptcha</div> */}
-              <div className="text-xs text-gray-400">Privacy - Terms</div>
+             
             </div>
           </div>
           
           <div className="text-center">
             <button 
               type="submit" 
-              className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition font-medium"
+              disabled={isSubmitting}
+              className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </div>
         </form>
       </div>
 
       
-      <div className="bg-gray-900 text-white py-16">
+      <div className="bg-gray-900 text-white py-16 relative z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-8">Connect With Me</h2>
           
           <div className="flex justify-center items-center space-x-8 mb-6">
           
             <a 
-              href="mailto:rishita10chauhan@gmail.com" 
+              href="mailto:rishitachauhan24@navgurukul.org" 
               className="hover:scale-110 transition-transform"
               target="_blank"
               rel="noreferrer"
@@ -147,7 +183,7 @@ export default function Contact(){
 
             
             <a 
-              href="https://www.linkedin.com/in/rishita-chauhan-5b1324338/" 
+              href="https://www.linkedin.com/in/rishitachauhan63/" 
               className="hover:scale-110 transition-transform"
               target="_blank"
               rel="noreferrer"
@@ -159,8 +195,18 @@ export default function Contact(){
           </div>
 
           <div className="space-y-1">
-            <p className="text-white text-lg">rishita10chauhan@gamil.com</p>
-            <p className="text-white text-lg">+916396712515</p>
+            <a 
+              href="mailto:rishitachauhan24@navgurukul.org" 
+              className="text-white text-lg hover:text-purple-400 transition-colors block"
+            >
+              rishitachauhan24@navgurukul.org
+            </a>
+            <a 
+              href="tel:+916396712515" 
+              className="text-white text-lg hover:text-purple-400 transition-colors block"
+            >
+              +916396712515
+            </a>
           </div>
         </div>
       </div>
