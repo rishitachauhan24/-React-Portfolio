@@ -17,7 +17,7 @@ const ProjectCard = ({title, description, tags, link, image}) => (
       <div className="flex items-start justify-between mb-2">
         <h3 className="font-semibold text-xl text-gray-900">{title}</h3>
         <div className="flex gap-2">
-          <a href={link} target="_blank" rel="noreferrer" className="text-gray-700 hover:text-purple-600">
+          <a href={link} target="_blank" rel="noreferrer" className="text-gray-700 hover:text-emerald-600">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
@@ -40,33 +40,21 @@ const ProjectCard = ({title, description, tags, link, image}) => (
     </div>
   </div>
 )
-
 export default function Projects(){
   return (
-    <section id="projects" className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white py-16 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.08]">
-        <div className="absolute inset-0 grid grid-cols-6 md:grid-cols-8 gap-16 p-12">
-          {[...Array(64)].map((_, i) => (
-            <div key={i} className="flex items-center justify-center text-gray-400 transform rotate-12">
-              {i % 8 === 0 && <span className="text-5xl font-bold">&lt;/&gt;</span>}
-              {i % 8 === 1 && <span className="text-5xl">⚙️</span>}
-              {i % 8 === 2 && <span className="text-4xl font-bold">HTML5</span>}
-              {i % 8 === 3 && <span className="text-5xl">💻</span>}
-              {i % 8 === 4 && <span className="text-4xl font-bold">CSS3</span>}
-              {i % 8 === 5 && <span className="text-5xl font-bold">{'{ }'}</span>}
-              {i % 8 === 6 && <span className="text-4xl font-bold">PYTHON</span>}
-              {i % 8 === 7 && <span className="text-5xl">⚡</span>}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <h1 className="text-5xl font-bold mb-12 text-center text-purple-600">
+    <section id="projects" className="bg-gradient-to-br from-emerald-50 via-white to-emerald-100 py-12 relative overflow-hidden">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center" style={{ background: 'linear-gradient(45deg, #1c4929, #043312)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
           Projects
         </h1>
+        
+        {/* Divider */}
+        <div className="flex items-center justify-center mb-12">
+          <div className="h-1 w-20 bg-gradient-to-r from-transparent via-emerald-800 to-transparent rounded-full"></div>
+        </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="bg-emerald-50 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 border-b-4 border-emerald-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
         <ProjectCard 
           title="Escape the Room" 
           description="A simple interactive game where users try to escape from a locked room by clicking objects and finding clues. Features include smooth animations, button interactions, and a clean UI built using HTML, CSS, and JavaScript."
@@ -98,8 +86,17 @@ export default function Projects(){
           link="https://learning-intern-api.vercel.app/"
           image="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&h=300&fit=crop"
         />
+        </div>
       </div>
       </div>
     </section>
+   
   )
 }
+
+
+
+
+
+
+

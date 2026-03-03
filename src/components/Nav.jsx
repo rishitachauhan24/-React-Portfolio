@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 const Nav = () => {
   const [activeSection, setActiveSection] = useState('home')
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuhomejeseaboutOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -51,16 +51,17 @@ const Nav = () => {
 
   return (
     <header 
-      className={`sticky top-0 z-50 transition-all duration-300 bg-white ${
+      className={`sticky top-0 z-50 transition-all duration-300 bg-green-50 ${
         isScrolled ? 'shadow-md' : 'shadow-sm'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
         <div className="flex items-center justify-between h-20">
           {/* Logo/Name */}
           <button 
             onClick={() => scrollToSection('home')}
-            className="text-2xl sm:text-3xl font-bold text-purple-600 hover:opacity-80 transition-opacity duration-200 focus:outline-none italic"
+            className="text-xl sm:text-2xl md:text-3xl font-bold hover:opacity-80 transition-opacity duration-200 focus:outline-none italic"
+            style={{ background: 'linear-gradient(45deg, #1c4929, #043312)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
           >
             Rishita Chauhan
           </button>
@@ -76,16 +77,20 @@ const Nav = () => {
                 >
                   <span className={`text-base font-medium transition-colors duration-200 ${
                     activeSection === item.id
-                      ? 'text-gray-900'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}>
+                      ? ''
+                      : 'hover:opacity-80'
+                  }`}
+                  style={{ background: 'linear-gradient(45deg, #1c4929, #043312)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+                  >
                     {item.label}
                   </span>
-                  <span className={`absolute -bottom-2 left-0 w-full h-0.5 bg-purple-600 transition-transform duration-200 ${
+                  <span className={`absolute -bottom-2 left-0 w-full h-0.5 transition-transform duration-200 ${
                     activeSection === item.id
                       ? 'scale-x-100'
                       : 'scale-x-0 group-hover:scale-x-100'
-                  }`}></span>
+                  }`}
+                  style={{ background: 'linear-gradient(45deg, #1c4929, #043312)' }}
+                  ></span>
                 </button>
               ))}
             </nav>
@@ -93,7 +98,8 @@ const Nav = () => {
             {/* Resume Download Button */}
             <button
               onClick={handleResumeDownload}
-              className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+              className="flex items-center gap-2 px-6 py-3 text-white font-medium rounded-lg transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+              style={{ background: 'linear-gradient(45deg, #1c4929, #043312)' }}
             >
               Resume
               <svg 
@@ -149,16 +155,29 @@ const Nav = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`px-4 py-3 rounded-lg text-left font-medium transition-all duration-200 ${
                   activeSection === item.id
-                    ? 'bg-purple-50 text-purple-600 border-l-4 border-purple-600'
-                    : 'text-gray-700 hover:bg-gray-50'
+                    ? 'bg-emerald-50 border-l-4'
+                    : 'hover:bg-gray-50'
                 }`}
+                style={activeSection === item.id ? { 
+                  background: 'linear-gradient(45deg, #1c4929, #043312)', 
+                  WebkitBackgroundClip: 'text', 
+                  WebkitTextFillColor: 'transparent', 
+                  backgroundClip: 'text',
+                  borderLeftColor: '#1c4929'
+                } : {
+                  background: 'linear-gradient(45deg, #1c4929, #043312)', 
+                  WebkitBackgroundClip: 'text', 
+                  WebkitTextFillColor: 'transparent', 
+                  backgroundClip: 'text'
+                }}
               >
                 {item.label}
               </button>
             ))}
             <button
               onClick={handleResumeDownload}
-              className="flex items-center justify-center gap-2 px-4 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-all duration-200 shadow-md mt-2"
+              className="flex items-center justify-center gap-2 px-4 py-3 text-white font-medium rounded-lg transition-all duration-200 shadow-md mt-2"
+              style={{ background: 'linear-gradient(45deg, #1c4929, #043312)' }}
             >
               Resume
               <svg 
@@ -183,3 +202,6 @@ const Nav = () => {
 }
 
 export default Nav
+
+
+
