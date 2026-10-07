@@ -140,42 +140,28 @@ const Skills = () => {
   ]
 
   return (
-    <section id="skills" className="py-12 bg-gradient-to-br from-emerald-50 via-white to-emerald-100 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ background: 'linear-gradient(45deg, #1c4929, #043312)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            Skills
-          </h2>
-          {/* Divider */}
-          <div className="flex items-center justify-center">
-            <div className="h-1 w-20 bg-gradient-to-r from-transparent via-emerald-800 to-transparent rounded-full"></div>
-          </div>
+    <section id="skills" className="editorial-section skills-section">
+      <div className="section-inner">
+        <div className="section-heading section-heading--row">
+          <h2>Skills</h2>
         </div>
-
-        {/* Skills Grid */}
-        <div className="bg-emerald-100 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 border-b-4 border-emerald-800">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
+        <div className="skills-grid">
             {skillsData.map((skill, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center gap-3 sm:gap-4 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1 border-b-4 border-emerald-800"
-              style={{
-                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.08)'
-              }}
+              className="skill-item"
             >
               {/* Icon */}
-              <div className="flex items-center justify-center h-16 sm:h-20 md:h-24">
+              <div className="skill-icon">
                 {skill.icon}
               </div>
               
               {/* Skill Name */}
-              <h3 className="text-xs font-semibold text-gray-800 text-center uppercase tracking-wider">
+              <h3 className="skill-name">
                 {skill.name}
               </h3>
             </div>
           ))}
-          </div>
         </div>
       </div>
     </section>

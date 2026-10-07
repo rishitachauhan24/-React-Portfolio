@@ -23,7 +23,7 @@ const Nav = () => {
   }
 
   const handleResumeDownload = () => {
-    const resumeUrl = 'https://drive.google.com/file/d/1iU1gV8Z14lSWSeiGn6-5BFu4CoyBXhHC/view?usp=sharing'
+    const resumeUrl = 'https://drive.google.com/file/d/1savOG7db5KnE-srTiDXF7Zoj5k0lHdvd/view?usp=sharing'
     window.open(resumeUrl, '_blank')
   }
 
@@ -51,7 +51,7 @@ const Nav = () => {
 
   return (
     <header 
-      className={`sticky top-0 z-50 transition-all duration-300 bg-green-50 ${
+      className={`nav-shell sticky top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'shadow-md' : 'shadow-sm'
       }`}
     >
@@ -60,27 +60,27 @@ const Nav = () => {
           {/* Logo/Name */}
           <button 
             onClick={() => scrollToSection('home')}
-            className="text-xl sm:text-2xl md:text-3xl font-bold hover:opacity-80 transition-opacity duration-200 focus:outline-none italic"
-            style={{ background: 'linear-gradient(45deg, #1c4929, #043312)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+            className="nav-logo text-xl sm:text-2xl md:text-3xl font-bold hover:opacity-80 transition-opacity duration-200 focus:outline-none"
+            style={{}}
           >
             Rishita Chauhan
           </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <nav className="flex items-center gap-8">
+            <nav className="nav-links flex items-center gap-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="relative group"
+                  className={`nav-link relative group ${activeSection === item.id ? 'is-active' : ''}`}
                 >
                   <span className={`text-base font-medium transition-colors duration-200 ${
                     activeSection === item.id
                       ? ''
                       : 'hover:opacity-80'
                   }`}
-                  style={{ background: 'linear-gradient(45deg, #1c4929, #043312)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+                  style={{}}
                   >
                     {item.label}
                   </span>
@@ -89,7 +89,7 @@ const Nav = () => {
                       ? 'scale-x-100'
                       : 'scale-x-0 group-hover:scale-x-100'
                   }`}
-                  style={{ background: 'linear-gradient(45deg, #1c4929, #043312)' }}
+                  style={{}}
                   ></span>
                 </button>
               ))}
@@ -98,8 +98,8 @@ const Nav = () => {
             {/* Resume Download Button */}
             <button
               onClick={handleResumeDownload}
-              className="flex items-center gap-2 px-6 py-3 text-white font-medium rounded-lg transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-              style={{ background: 'linear-gradient(45deg, #1c4929, #043312)' }}
+              className="button-primary nav-resume flex items-center gap-2 px-6 py-3 text-white font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+              style={{}}
             >
               Resume
               <svg 
@@ -121,7 +121,7 @@ const Nav = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none transition-colors"
+            className="nav-menu-button md:hidden p-2 text-gray-700 hover:bg-gray-100 focus:outline-none transition-colors"
             aria-label="Toggle menu"
           >
             <svg
@@ -144,7 +144,7 @@ const Nav = () => {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          className={`mobile-nav md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
             isMobileMenuOpen ? 'max-h-80 pb-4' : 'max-h-0'
           }`}
         >
@@ -153,7 +153,7 @@ const Nav = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-4 py-3 rounded-lg text-left font-medium transition-all duration-200 ${
+                className={`mobile-nav-link px-4 py-3 text-left font-medium transition-all duration-200 ${
                   activeSection === item.id
                     ? 'bg-emerald-50 border-l-4'
                     : 'hover:bg-gray-50'
@@ -176,8 +176,8 @@ const Nav = () => {
             ))}
             <button
               onClick={handleResumeDownload}
-              className="flex items-center justify-center gap-2 px-4 py-3 text-white font-medium rounded-lg transition-all duration-200 shadow-md mt-2"
-              style={{ background: 'linear-gradient(45deg, #1c4929, #043312)' }}
+              className="button-primary flex items-center justify-center gap-2 px-4 py-3 text-white font-medium transition-all duration-200 mt-2"
+              style={{}}
             >
               Resume
               <svg 

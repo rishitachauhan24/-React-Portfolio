@@ -56,19 +56,14 @@ export default function Contact(){
   }
 
   return (
-    <section id="contact" className="bg-gradient-to-br from-emerald-50 via-white to-emerald-100 py-12 pb-0 relative overflow-hidden">
+    <section id="contact" className="editorial-section contact-section">
       
-      <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-16 mb-0 relative z-10">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center" style={{ background: 'linear-gradient(45deg, #1c4929, #043312)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-          Contact
-        </h1>
-        
-        {/* Divider */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="h-1 w-20 bg-gradient-to-r from-transparent via-emerald-800 to-transparent rounded-full"></div>
+      <div className="section-inner contact-inner max-w-4xl mx-auto px-4 sm:px-8 lg:px-16 mb-0 relative z-10">
+        <div className="section-heading">
+          <h2>Contact</h2>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 bg-emerald-100 p-4 sm:p-6 md:p-8 shadow-lg rounded-lg border-b-4 border-emerald-800 relative z-20">
+        <form onSubmit={handleSubmit} className="contact-form space-y-4 sm:space-y-6 relative z-20">
           <div>
             <label className="block text-sm font-medium mb-2 text-gray-700">Name:</label>
             <input 
@@ -76,7 +71,7 @@ export default function Contact(){
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full border-b-2 border-gray-300 px-2 py-2 focus:outline-none focus:border-emerald-800" 
+              className="contact-input w-full border-b-2 border-gray-300 px-2 py-2 focus:outline-none focus:border-emerald-800" 
               required
             />
           </div>
@@ -88,7 +83,7 @@ export default function Contact(){
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border-b-2 border-gray-300 px-2 py-2 focus:outline-none focus:border-emerald-800" 
+              className="contact-input w-full border-b-2 border-gray-300 px-2 py-2 focus:outline-none focus:border-emerald-800" 
               required
             />
           </div>
@@ -99,7 +94,7 @@ export default function Contact(){
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="w-full border-2 border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-emerald-800" 
+              className="contact-input contact-textarea w-full border-2 border-gray-300 px-3 py-2 focus:outline-none focus:border-emerald-800" 
               rows="5"
               required
             />
@@ -123,8 +118,8 @@ export default function Contact(){
             <button 
               type="submit" 
               disabled={isSubmitting}
-              className="text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition font-medium disabled:bg-gray-400 disabled:cursor-not-allowed text-sm sm:text-base"
-              style={{ background: isSubmitting ? '#9ca3af' : 'linear-gradient(45deg, #1c4929, #043312)' }}
+              className="button-primary text-white px-6 sm:px-8 py-2.5 sm:py-3 transition font-medium disabled:bg-gray-400 disabled:cursor-not-allowed text-sm sm:text-base"
+              style={{ background: isSubmitting ? '#9ca3af' : undefined }}
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
@@ -133,7 +128,7 @@ export default function Contact(){
       </div>
 
       
-      <div className="text-white py-12 sm:py-16 relative z-10 mt-8 sm:mt-12" style={{ background: 'linear-gradient(45deg, #1c4929, #043312)' }}>
+      <footer className="portfolio-footer text-white py-12 sm:py-16 relative z-10 mt-8 sm:mt-12">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-16 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Connect With Me</h2>
           
@@ -200,7 +195,7 @@ export default function Contact(){
             </a>
           </div>
         </div>
-      </div>
+      </footer>
     </section>
   )
 }

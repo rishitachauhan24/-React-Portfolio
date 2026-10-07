@@ -3,116 +3,50 @@ import React, { useState, useEffect } from 'react'
 export default function Home() {
   const [displayText, setDisplayText] = useState('Frontend Developer')
   const [fadeOut, setFadeOut] = useState(false)
-  
+
   useEffect(() => {
     const texts = ['Frontend Developer', 'Aspiring Full Stack Developer']
     let currentIndex = 0
-    
     const interval = setInterval(() => {
       setFadeOut(true)
-      
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % texts.length
         setDisplayText(texts[currentIndex])
         setFadeOut(false)
-      }, 500)
+      }, 350)
     }, 4000)
-    
+
     return () => clearInterval(interval)
   }, [])
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <section id="home" className="py-8 sm:py-12 flex items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-emerald-100 relative overflow-hidden">
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-8 sm:py-12 grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center relative z-10">
-        {/* Left Content */}
-        <div className="text-left">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-            <span className="text-gray-900">Hi,</span>
-            <br />
-            <span className="text-gray-900">I'm </span>
-            <span className="font-bold" style={{ background: 'linear-gradient(45deg, #1c4929, #043312)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Rishita Chauhan
-            </span>
-          </h2>
-
-          <div className="h-20 sm:h-24 md:h-20 mb-8 sm:mb-12 md:mb-16 flex items-center">
-            <h3 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 transition-all duration-500 leading-tight ${
-              fadeOut ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'
-            }`}>
-              {displayText}
-            </h3>
-          </div>
-
-          <button 
-            onClick={() => window.open('https://drive.google.com/file/d/1iU1gV8Z14lSWSeiGn6-5BFu4CoyBXhHC/view?usp=sharing', '_blank')}
-            className="inline-flex items-center text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition font-medium shadow-lg hover:shadow-xl text-sm sm:text-base"
-            style={{ background: 'linear-gradient(45deg, #1c4929, #043312)' }}
-          >
-            Resume 
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
-            </svg>
-          </button>
-
-          {/* Social Icons */}
-          <div className="flex gap-4 sm:gap-6 mt-8 sm:mt-12 md:mt-16">
-            <a 
-              href="https://www.linkedin.com/in/rishitachauhan63/" 
-              target="_blank" 
-              rel="noreferrer"
-              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-100 hover:bg-emerald-50 rounded-lg transition"
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-            </a>
-
-            <a 
-              href="https://github.com/rishitachauhan24" 
-              target="_blank" 
-              rel="noreferrer"
-              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-100 hover:bg-emerald-50 rounded-lg transition"
-            >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        {/* Right Side - Profile Image with Decorative Elements */}
-        <div className="relative flex items-center justify-center md:justify-start">
-          {/* Decorative circles and elements */}
-          <div className="absolute inset-0 flex items-center justify-center md:justify-start md:-left-10">
-            {/* Outer decorative circle */}
-            <div className="absolute w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border-2 border-gray-300 opacity-30 left-0"></div>
-          </div>
-
-          {/* Main Profile Image */}
-          <div className="relative z-10">
-            <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-4 sm:border-6 md:border-8 border-white shadow-2xl bg-gradient-to-br from-emerald-50 to-gray-100">
-              <img 
-                src="/profile.jpg" 
-                alt="Rishita Chauhan"
-                className="w-full h-full object-cover rounded-full scale-150 -translate-y-[60px] sm:-translate-y-[80px] md:-translate-y-[100px]"
-                style={{ objectPosition: 'center 20%' }}
-              />
+    <>
+      <section id="home" className="home-hero">
+        <div className="home-hero__inner">
+          <div className="hero-copy">
+            <h1 className="hero-title"><span>Hi,</span><br /><span>I'm </span><em>Rishita Chauhan</em></h1>
+            <p className={`hero-role ${fadeOut ? 'is-fading' : ''}`}>{displayText}</p>
+            <div className="hero-actions">
+              <a className="button-primary" href="https://drive.google.com/file/d/1hDgCHxrilQfIYE2lR36AJqVlXVI0G9Xv/view?usp=sharing" target="_blank" rel="noreferrer">
+                Resume
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16a4 4 0 0 1-.9-7.9A5 5 0 0 1 16 6l.1 0a5 5 0 0 1 1 9.9M9 19l3 3 3-3m-3 3V10" /></svg>
+              </a>
             </div>
-            
-            {/* Ring decoration */}
-            <div className="absolute -inset-2 sm:-inset-3 md:-inset-4 rounded-full border-2 border-dashed border-slate-400 opacity-50"></div>
+            <div className="hero-socials" aria-label="Social profiles">
+              <a href="https://www.linkedin.com/in/rishitachauhan63/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5ZM8 19H5V8h3v11ZM6.5 6.7a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5ZM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.47V19Z" /></svg>
+              </a>
+              <a href="https://github.com/rishitachauhan24" target="_blank" rel="noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0a12 12 0 0 0-3.8 23.38c.6.11.8-.26.8-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58A12 12 0 0 0 12 0Z" /></svg>
+              </a>
+            </div>
           </div>
+          <figure className="hero-portrait">
+            <img src="/profile.jpg" alt="Rishita Chauhan" />
+          </figure>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 
