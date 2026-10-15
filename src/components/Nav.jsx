@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Nav = () => {
+const Nav = ({ onHomeClick }) => {
   const [activeSection, setActiveSection] = useState('home')
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -59,11 +59,14 @@ const Nav = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo/Name */}
           <button 
-            onClick={() => scrollToSection('home')}
+            onClick={() => {
+              onHomeClick()
+              scrollToSection('home')
+            }}
             className="nav-logo text-xl sm:text-2xl md:text-3xl font-bold hover:opacity-80 transition-opacity duration-200 focus:outline-none"
             style={{}}
           >
-            Rishita Chauhan
+            &lt; Rishita Chauhan /&gt;
           </button>
 
           {/* Desktop Navigation */}

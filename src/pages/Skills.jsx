@@ -139,6 +139,8 @@ const Skills = () => {
     }
   ]
 
+  const loopedSkills = [...skillsData, ...skillsData]
+
   return (
     <section id="skills" className="editorial-section skills-section">
       <div className="section-inner">
@@ -146,9 +148,10 @@ const Skills = () => {
           <h2>Skills</h2>
         </div>
         <div className="skills-grid">
-            {skillsData.map((skill, index) => (
+          <div className="skills-track">
+            {loopedSkills.map((skill, index) => (
             <div
-              key={index}
+              key={`${skill.name}-${index}`}
               className="skill-item"
             >
               {/* Icon */}
@@ -161,7 +164,8 @@ const Skills = () => {
                 {skill.name}
               </h3>
             </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

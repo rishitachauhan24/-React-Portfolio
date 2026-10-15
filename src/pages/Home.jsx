@@ -1,22 +1,44 @@
 import React, { useState, useEffect } from 'react'
 
 export default function Home() {
-  const [displayText, setDisplayText] = useState('Frontend Developer')
-  const [fadeOut, setFadeOut] = useState(false)
+  const roles = [
+    'Frontend Developer',
+    'Backend Developer',
+    'Full/MERN Stack Developer',
+    'Web Developer',
+    'Aspiring Software Developer'
+  ]
+  const [displayText, setDisplayText] = useState('')
 
   useEffect(() => {
-    const texts = ['Frontend Developer', 'Aspiring Full Stack Developer']
-    let currentIndex = 0
-    const interval = setInterval(() => {
-      setFadeOut(true)
-      setTimeout(() => {
-        currentIndex = (currentIndex + 1) % texts.length
-        setDisplayText(texts[currentIndex])
-        setFadeOut(false)
-      }, 350)
-    }, 4000)
+    let roleIndex = 0
+    let characterIndex = 0
+    let isDeleting = false
+    let timer
 
-    return () => clearInterval(interval)
+    const typeRole = () => {
+      const role = roles[roleIndex]
+      characterIndex += isDeleting ? -1 : 1
+      setDisplayText(role.slice(0, characterIndex))
+
+      let delay = isDeleting ? 45 : 90
+      if (!isDeleting && characterIndex === role.length) {
+        isDeleting = true
+        delay = 1800
+      } else if (isDeleting && characterIndex === 0) {
+        isDeleting = false
+        roleIndex = (roleIndex + 1) % roles.length
+        delay = 350
+      }
+
+      timer = window.setTimeout(typeRole, delay)
+    }
+
+    timer = window.setTimeout(typeRole, 450)
+
+    return () => {
+      window.clearTimeout(timer)
+    }
   }, [])
 
   return (
@@ -25,7 +47,9 @@ export default function Home() {
         <div className="home-hero__inner">
           <div className="hero-copy">
             <h1 className="hero-title"><span>Hi,</span><br /><span>I'm </span><em>Rishita Chauhan</em></h1>
-            <p className={`hero-role ${fadeOut ? 'is-fading' : ''}`}>{displayText}</p>
+            <p className="hero-role" aria-live="polite">
+              {displayText}<span className="hero-role__cursor" aria-hidden="true" />
+            </p>
             <div className="hero-actions">
               <a className="button-primary" href="https://drive.google.com/file/d/1hDgCHxrilQfIYE2lR36AJqVlXVI0G9Xv/view?usp=sharing" target="_blank" rel="noreferrer">
                 Resume
