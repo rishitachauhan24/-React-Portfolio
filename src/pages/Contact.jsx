@@ -87,7 +87,7 @@ export default function Contact() {
                     <circle cx="12" cy="10" r="3"/>
                   </svg>
                 </div>
-                <span>Himachal Pradesh, India</span>
+                <span>Dehradun, Uttakharand</span>
               </div>
             </div>
 
