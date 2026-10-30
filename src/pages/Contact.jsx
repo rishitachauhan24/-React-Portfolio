@@ -1,39 +1,26 @@
 import React, { useState } from 'react'
 
-export default function Contact(){
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
+export default function Contact() {
+  const [formData,    setFormData]    = useState({ name: '', email: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-
     try {
-      // Web3Forms - Free & Instant!
-      // Get your own key: https://web3forms.com (just enter your email - takes 30 seconds!)
-      // TODO: Replace 'YOUR_ACCESS_KEY_HERE' with your actual key from web3forms.com
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          access_key: 'faa9c473-ab0c-4687-9769-59c1a8c51b10', // Your Web3Forms access key
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          subject: 'New Portfolio Contact Message!',
-          from_name: 'Portfolio Contact Form'
-        })
+          access_key:  'faa9c473-ab0c-4687-9769-59c1a8c51b10',
+          name:        formData.name,
+          email:       formData.email,
+          message:     formData.message,
+          subject:     'New Portfolio Contact Message!',
+          from_name:   'Portfolio Contact Form',
+        }),
       })
-
       const result = await response.json()
-
       if (result.success) {
         alert('✅ Message successfully sent! I will reply to you soon.')
         setFormData({ name: '', email: '', message: '' })
@@ -48,161 +35,232 @@ export default function Contact(){
     }
   }
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value })
 
   return (
     <section id="contact" className="editorial-section contact-section">
-      
-      <div className="section-inner contact-inner max-w-4xl mx-auto px-4 sm:px-8 lg:px-16 mb-0 relative z-10">
-        <div className="section-heading">
-          <h2>Contact</h2>
+      <div className="section-inner">
+        <div data-reveal>
+          <span className="section-label">Get In Touch</span>
+          <div className="section-heading">
+            <h2>Contact</h2>
+          </div>
         </div>
-        
-        <form onSubmit={handleSubmit} className="contact-form space-y-4 sm:space-y-6 relative z-20">
-          <div>
-            <label className="block text-sm font-medium mb-2 text-gray-700">Name:</label>
-            <input 
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="contact-input w-full border-b-2 border-gray-300 px-2 py-2 focus:outline-none focus:border-emerald-800" 
-              required
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium mb-2 text-gray-700">Email:</label>
-            <input 
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="contact-input w-full border-b-2 border-gray-300 px-2 py-2 focus:outline-none focus:border-emerald-800" 
-              required
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium mb-2 text-gray-700">Message:</label>
-            <textarea 
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              className="contact-input contact-textarea w-full border-2 border-gray-300 px-3 py-2 focus:outline-none focus:border-emerald-800" 
-              rows="5"
-              required
-            />
-          </div>
 
-          <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 border-2 border-gray-300 rounded w-fit">
-            <input 
-              type="checkbox" 
-              className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer" 
-              style={{ accentColor: '#1c4929' }}
-              required 
-            />
-            <span className="text-xs sm:text-sm text-gray-700">I am human</span>
-            <div className="ml-4">
-              {/* <div className="text-xs text-emerald-500 font-semibold">hCaptcha</div> */}
-             
+        <div className="contact-layout">
+          {/* ── Info Column ── */}
+          <div className="contact-info-col" data-reveal="left">
+            <p className="contact-info-heading">
+              Have a project in mind or want to connect? I'd love to hear from you.
+            </p>
+
+            <div className="contact-info-items">
+              {/* Email */}
+              <div className="contact-info-item">
+                <div className="contact-info-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="m22 7-10 7L2 7"/>
+                  </svg>
+                </div>
+                <a href="mailto:rishitachauhan24@navgurukul.org">
+                  rishitachauhan24@navgurukul.org
+                </a>
+              </div>
+
+              {/* Phone */}
+              <div className="contact-info-item">
+                <div className="contact-info-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.07-1.07a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                <a href="tel:+916396712515">+91 6396712515</a>
+              </div>
+
+              {/* Location */}
+              <div className="contact-info-item">
+                <div className="contact-info-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <span>Himachal Pradesh, India</span>
+              </div>
+            </div>
+
+            {/* Social links */}
+            <div className="contact-socials" aria-label="Social profiles">
+              <a
+                href="https://www.linkedin.com/in/rishitachauhan63/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="contact-social-link"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5ZM8 19H5V8h3v11ZM6.5 6.7a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5ZM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.47V19Z"/>
+                </svg>
+              </a>
+              <a
+                href="https://github.com/rishitachauhan24"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+                className="contact-social-link"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 0a12 12 0 0 0-3.8 23.38c.6.11.8-.26.8-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58A12 12 0 0 0 12 0Z"/>
+                </svg>
+              </a>
+              <a
+                href="mailto:rishitachauhan24@navgurukul.org"
+                aria-label="Email"
+                className="contact-social-link"
+              >
+                <svg viewBox="0 0 24 24" style={{ fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 }}>
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-10 7L2 7"/>
+                </svg>
+              </a>
+              <a
+                href="tel:+916396712515"
+                aria-label="Phone"
+                className="contact-social-link"
+              >
+                <svg viewBox="0 0 24 24" style={{ fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 }}>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.07-1.07a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </a>
             </div>
           </div>
-          
-          <div className="text-center">
-            <button 
-              type="submit" 
-              disabled={isSubmitting}
-              className="button-primary text-white px-6 sm:px-8 py-2.5 sm:py-3 transition font-medium disabled:bg-gray-400 disabled:cursor-not-allowed text-sm sm:text-base"
-              style={{ background: isSubmitting ? '#9ca3af' : undefined }}
-            >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </button>
+
+          {/* ── Form Column ── */}
+          <div className="contact-form-col" data-reveal="right">
+            <form onSubmit={handleSubmit} className="contact-form">
+              {/* Name + Email row */}
+              <div className="contact-form-row">
+                <div className="form-group">
+                  <label htmlFor="cf-name" className="form-label">Name</label>
+                  <input
+                    id="cf-name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="contact-input"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="cf-email" className="form-label">Email</label>
+                  <input
+                    id="cf-email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="contact-input"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Message */}
+              <div className="form-group">
+                <label htmlFor="cf-message" className="form-label">Message</label>
+                <textarea
+                  id="cf-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="contact-input contact-textarea"
+                  placeholder="Tell me about your project or just say hello…"
+                  rows="5"
+                  required
+                />
+              </div>
+
+              {/* Human check */}
+              <div className="contact-captcha">
+                <input type="checkbox" required style={{ accentColor: 'var(--green)' }} />
+                <span>I am human</span>
+              </div>
+
+              {/* Submit */}
+              <div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="button-primary"
+                  style={{ opacity: isSubmitting ? .65 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+                >
+                  {isSubmitting ? 'Sending…' : 'Send Message'}
+                  {!isSubmitting && (
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <line x1="22" y1="2" x2="11" y2="13"/>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                  )}
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
 
-      
-      <footer className="portfolio-footer text-white py-12 sm:py-16 relative z-10 mt-8 sm:mt-12">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-16 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Connect With Me</h2>
-          
-          <div className="flex justify-center items-center space-x-4 sm:space-x-6 md:space-x-8 mb-4 sm:mb-6">
-          
-            <a 
-              href="mailto:rishitachauhan24@navgurukul.org" 
-              className="hover:scale-110 transition-transform"
+      {/* ── Footer ── */}
+      <footer className="portfolio-footer">
+        <div className="portfolio-footer__inner">
+          {/* Logo */}
+          <span className="portfolio-footer__logo">Rishita Chauhan</span>
+
+          {/* Social icon links */}
+          <div className="portfolio-footer__links">
+            <a
+              href="https://www.linkedin.com/in/rishitachauhan63/"
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn"
+              className="portfolio-footer__link"
             >
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white hover:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              <svg viewBox="0 0 24 24">
+                <path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5ZM8 19H5V8h3v11ZM6.5 6.7a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5ZM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.47V19Z"/>
               </svg>
             </a>
-
-         
-            <a 
-              href="tel:+916396712515" 
-              className="hover:scale-110 transition-transform"
-            >
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white hover:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-              </svg>
-            </a>
-
-           
-            <a 
-              href="https://github.com/rishitachauhan24" 
-              className="hover:scale-110 transition-transform"
+            <a
+              href="https://github.com/rishitachauhan24"
               target="_blank"
               rel="noreferrer"
+              aria-label="GitHub"
+              className="portfolio-footer__link"
             >
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white hover:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 0a12 12 0 0 0-3.8 23.38c.6.11.8-.26.8-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58A12 12 0 0 0 12 0Z"/>
               </svg>
             </a>
-
-            
-            <a 
-              href="https://www.linkedin.com/in/rishitachauhan63/" 
-              className="hover:scale-110 transition-transform"
-              target="_blank"
-              rel="noreferrer"
+            <a
+              href="mailto:rishitachauhan24@navgurukul.org"
+              aria-label="Email"
+              className="portfolio-footer__link"
             >
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white hover:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              <svg viewBox="0 0 24 24" style={{ fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 }}>
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-10 7L2 7"/>
               </svg>
             </a>
           </div>
 
-          <div className="space-y-1">
-            <a 
-              href="mailto:rishitachauhan24@navgurukul.org" 
-              className="text-white text-sm sm:text-base md:text-lg hover:text-emerald-400 transition-colors block"
-            >
-              rishitachauhan24@navgurukul.org
-            </a>
-            <a 
-              href="tel:+916396712515" 
-              className="text-white text-sm sm:text-base md:text-lg hover:text-emerald-400 transition-colors block"
-            >
-              +916396712515
-            </a>
-          </div>
+          {/* Copyright */}
+          <span className="portfolio-footer__copy">
+            © {new Date().getFullYear()} Rishita Chauhan
+          </span>
         </div>
       </footer>
     </section>
   )
 }
-
-
-
-
-
-
-

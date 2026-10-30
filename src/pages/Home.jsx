@@ -6,14 +6,14 @@ export default function Home() {
     'Backend Developer',
     'Full/MERN Stack Developer',
     'Web Developer',
-    'Aspiring Software Developer'
+    'Aspiring Software Developer',
   ]
   const [displayText, setDisplayText] = useState('')
 
   useEffect(() => {
-    let roleIndex = 0
+    let roleIndex      = 0
     let characterIndex = 0
-    let isDeleting = false
+    let isDeleting     = false
     let timer
 
     const typeRole = () => {
@@ -21,59 +21,122 @@ export default function Home() {
       characterIndex += isDeleting ? -1 : 1
       setDisplayText(role.slice(0, characterIndex))
 
-      let delay = isDeleting ? 45 : 90
+      let delay = isDeleting ? 44 : 88
       if (!isDeleting && characterIndex === role.length) {
         isDeleting = true
-        delay = 1800
+        delay = 1900
       } else if (isDeleting && characterIndex === 0) {
         isDeleting = false
-        roleIndex = (roleIndex + 1) % roles.length
-        delay = 350
+        roleIndex  = (roleIndex + 1) % roles.length
+        delay      = 380
       }
 
       timer = window.setTimeout(typeRole, delay)
     }
 
-    timer = window.setTimeout(typeRole, 450)
-
-    return () => {
-      window.clearTimeout(timer)
-    }
+    timer = window.setTimeout(typeRole, 500)
+    return () => window.clearTimeout(timer)
   }, [])
 
   return (
-    <>
-      <section id="home" className="home-hero">
-        <div className="home-hero__inner">
-          <div className="hero-copy">
-            <h1 className="hero-title"><span>Hi,</span><br /><span>I'm </span><em>Rishita Chauhan</em></h1>
-            <p className="hero-role" aria-live="polite">
-              {displayText}<span className="hero-role__cursor" aria-hidden="true" />
-            </p>
-            <div className="hero-actions">
-              <a className="button-primary" href="https://drive.google.com/file/d/1hDgCHxrilQfIYE2lR36AJqVlXVI0G9Xv/view?usp=sharing" target="_blank" rel="noreferrer">
-                Resume
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16a4 4 0 0 1-.9-7.9A5 5 0 0 1 16 6l.1 0a5 5 0 0 1 1 9.9M9 19l3 3 3-3m-3 3V10" /></svg>
-              </a>
-            </div>
-            <div className="hero-socials" aria-label="Social profiles">
-              <a href="https://www.linkedin.com/in/rishitachauhan63/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5ZM8 19H5V8h3v11ZM6.5 6.7a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5ZM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.47V19Z" /></svg>
-              </a>
-              <a href="https://github.com/rishitachauhan24" target="_blank" rel="noreferrer" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0a12 12 0 0 0-3.8 23.38c.6.11.8-.26.8-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58A12 12 0 0 0 12 0Z" /></svg>
-              </a>
-            </div>
+    <section id="home" className="home-hero">
+      {/* Decorative orb */}
+      <div className="hero-orb" aria-hidden="true" />
+
+      <div className="home-hero__inner">
+        {/* Copy */}
+        <div className="hero-copy">
+          {/* Eyebrow */}
+          <span className="hero-eyebrow" aria-hidden="true">
+            <span className="hero-eyebrow__dot" />
+            Available for opportunities
+          </span>
+
+          <h1 className="hero-title">
+            <span>Hi,</span>
+            <br />
+            <span>I'm </span>
+            <em>Rishita Chauhan</em>
+          </h1>
+
+          <p className="hero-role" aria-live="polite">
+            {displayText}
+            <span className="hero-role__cursor" aria-hidden="true" />
+          </p>
+
+          <div className="hero-actions">
+            {/* Primary CTA — resume download */}
+            <a
+              className="button-primary"
+              href="https://drive.google.com/file/d/1hDgCHxrilQfIYE2lR36AJqVlXVI0G9Xv/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Resume
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 16a4 4 0 0 1-.9-7.9A5 5 0 0 1 16 6l.1 0a5 5 0 0 1 1 9.9M9 19l3 3 3-3m-3 3V10" />
+              </svg>
+            </a>
+
+            {/* Outline — scroll to projects */}
+            <button
+              className="button-outline"
+              onClick={() => {
+                const el = document.getElementById('projects')
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }}
+            >
+              View Work
+            </button>
           </div>
-          <figure className="hero-portrait">
-            <img src="/profile.jpg" alt="Rishita Chauhan" />
-          </figure>
+
+          {/* Social links */}
+          <div className="hero-socials" aria-label="Social profiles">
+            <a
+              href="https://www.linkedin.com/in/rishitachauhan63/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5ZM8 19H5V8h3v11ZM6.5 6.7a1.75 1.75 0 1 1 0-3.5 1.75 1.75 0 0 1 0 3.5ZM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.47V19Z" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/rishitachauhan24"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 0a12 12 0 0 0-3.8 23.38c.6.11.8-.26.8-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58A12 12 0 0 0 12 0Z" />
+              </svg>
+            </a>
+            <a
+              href="mailto:rishitachauhan24@navgurukul.org"
+              aria-label="Email"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" style={{ fill: 'none', stroke: 'currentColor', strokeWidth: 1.8 }}>
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-10 7L2 7"/>
+              </svg>
+            </a>
+          </div>
         </div>
-      </section>
-    </>
+
+        {/* Portrait */}
+        <figure className="hero-portrait">
+          <div className="hero-portrait__img-wrap">
+            <img src="/profile.jpg" alt="Rishita Chauhan" />
+          </div>
+        </figure>
+      </div>
+
+      {/* Scroll hint */}
+      <div className="hero-scroll-hint" aria-hidden="true">
+        <div className="hero-scroll-hint__line" />
+        <span>Scroll</span>
+      </div>
+    </section>
   )
 }
-
-
-
-
